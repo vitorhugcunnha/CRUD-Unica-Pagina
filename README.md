@@ -41,7 +41,7 @@ data_entrega → Expected delivery date.
 The PHP code begins with the database connection using mysqli:
 
 php
-Copiar código
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -55,7 +55,7 @@ if($conn->connect_error){
 When the Add form is submitted, PHP collects the inputs and inserts them into the Pedidos table:
 
 php
-Copiar código
+
 if(isset($_POST['create'])){
     $nomeCli = $_POST['NomeCli'];
     $Quantidade = $_POST['Quantidade'];
@@ -70,7 +70,7 @@ if(isset($_POST['create'])){
 If the user clicks Excluir, PHP receives the id via $_GET and deletes the record:
 
 php
-Copiar código
+
 if(isset($_GET['delete'])){
     $id = $_GET['delete'];
     $sql = "DELETE FROM pedidos WHERE id_pedidos=$id";
@@ -80,7 +80,7 @@ if(isset($_GET['delete'])){
 The Update form sends data (including the record ID) via POST, and PHP updates that row:
 
 php
-Copiar código
+
 if(isset($_POST['Editar'])){
     $ID = $_POST['id_pedidos'];
     $nomeCli = $_POST['NomeCli'];
@@ -102,7 +102,7 @@ The HTML part contains two forms:
 
 1️⃣ Add New Order
 html
-Copiar código
+
 <form method="POST" action="index.php">
     <label for="NomeCli">Client Name:</label>
     <input type="text" name="NomeCli" required>
@@ -132,7 +132,7 @@ required → Prevents form submission if empty.
 
 2️⃣ Update an Existing Order
 html
-Copiar código
+
 <form method="POST" action="index.php">
     <label for="NomeCli">Client Name:</label>
     <input type="text" name="NomeCli" required>
@@ -157,13 +157,13 @@ Here, the ID of the order is required to identify which row should be updated.
 After processing forms, PHP executes:
 
 php
-Copiar código
+
 $sql = "SELECT * FROM Pedidos";
 $resultado = $conn->query($sql);
 If there are rows, they are displayed inside an HTML table:
 
 html
-Copiar código
+
 <table border="1">
     <tr>
         <th>id_pedidos</th>
@@ -176,7 +176,7 @@ Copiar código
 Each row has an Excluir link:
 
 html
-Copiar código
+
 <a href="index.php?delete=ID">Delete</a>
 🚀 Summary
 This project is a basic CRUD in PHP + MySQL.
